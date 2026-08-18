@@ -45,6 +45,19 @@ public class Matrix
         this.mat = mat;
     }
 
+    public void fillMatrix()
+    {
+        int i, j;
+        final int LI = 1;
+        final int LS = 100;
+
+        for (i = 0; i < m; i++) {
+            for (j = 0; j < n; j++) {
+                mat[i][j] = (int)(Math.random() * (LS - LI + 1) + LI);
+            }
+        }
+    }
+
     public void showMatrix()
     {
         int i, j;
@@ -54,5 +67,29 @@ public class Matrix
             }
             System.out.println();
         }
-    }   
+    }  
+    
+    public void mainDiagonal()
+    {
+        for (int i = 0; i < n; i++) {
+            System.out.println(mat[i][i]);
+        }
+    }
+
+    public void secondaryDiagonal()
+    {
+        for (int i = 0; i < n; i++) {
+            System.out.println(mat[i][n - i - 1]);
+        }
+    }
+
+    public void triangularUp()
+    {
+        int i, j;
+        for (i = 1; i < n; i++) {
+            for (j = 0; j < i; j++) {
+                System.out.println(mat[i][j]);
+            }
+        }
+    }
 }
