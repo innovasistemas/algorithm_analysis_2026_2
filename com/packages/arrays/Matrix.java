@@ -1,4 +1,5 @@
 package com.packages.arrays;
+import com.packages.primes.*;
 
 public class Matrix 
 {
@@ -49,7 +50,7 @@ public class Matrix
     {
         int i, j;
         final int LI = 1;
-        final int LS = 100;
+        final int LS = 10;
 
         for (i = 0; i < m; i++) {
             for (j = 0; j < n; j++) {
@@ -91,5 +92,20 @@ public class Matrix
                 System.out.println(mat[i][j]);
             }
         }
+    }
+
+    public int countPrimes()
+    {
+        int i, j, cp;
+        cp = 0;
+        PrimeNumbers prime = new PrimeNumbers();
+        for (i = 0; i < m; i++) {
+            for (j = 0; j < n; j++) {
+                if (prime.prime4(mat[i][j])) {
+                    cp++;
+                }
+            }
+        }
+        return cp;
     }
 }
