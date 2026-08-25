@@ -1,4 +1,6 @@
 import com.packages.arrays.*;
+import com.packages.primes.*;
+import com.packages.utils.*;
 import java.util.Scanner;
 
 public class Main
@@ -12,6 +14,7 @@ public class Main
             System.out.println("0. Salir");
             System.out.println("1. Matrices");
             System.out.println("2. Vectores");
+            System.out.println("3. Primos");
             System.out.print("Ingrese su opción: ");
             option = input.next();
             switch (option) {
@@ -20,6 +23,9 @@ public class Main
                     break;
                 case "1":
                     menuMatrix();
+                    break;
+                case "3":
+                    menuPrimos();
                     break;
                 default:
                     System.out.println("Opción no válida");
@@ -99,6 +105,46 @@ public class Main
                     } else {
                         System.out.println("No ha creado la matriz");
                     }
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+                    break;
+            }
+
+        } while (!option.equals("0"));
+    }
+
+    public static void menuPrimos()
+    {
+        String option;
+        PrimeNumbers prime = new PrimeNumbers();
+        Operations oper = new Operations();
+        int P[] = new int[100];
+        int t = 0;
+        P[t] = 2;
+        int P1[] = new int[100];
+        int t1 = 0;
+        P1[t1] = 2;
+        do {
+            System.out.println("\n-----Menú primos-----");    
+            System.out.println("0. Regresar");
+            System.out.println("1. Ingresar número");
+            System.out.println("2. Primos Euclides");
+            System.out.println("3. Primos sin Euclides");
+            System.out.print("Ingrese su opción: ");
+            option = input.next();
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    break;
+                case "2":
+                    P[++t] = prime.newPrimeEuclides(P, t);
+                    oper.showArray(P, t);
+                    break;
+                case "3":
+                    P1[++t1] = prime.newPrimeWithoutEuclides(P1, t1);
+                    oper.showArray(P1, t1);
                     break;
                 default:
                     System.out.println("Opción no válida");

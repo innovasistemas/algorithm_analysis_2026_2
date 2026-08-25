@@ -1,4 +1,5 @@
 package com.packages.primes;
+import com.packages.utils.*;
 
 public class PrimeNumbers 
 {
@@ -63,5 +64,28 @@ public class PrimeNumbers
             }
         }
         return sw;
+    }
+
+    public int newPrimeEuclides(int P[], int t)
+    {
+        Operations oper = new Operations();
+        int x = oper.product(P, t);
+        int y = x + 1;
+        int d = 2;
+        while (d > 1 && y % d != 0) {
+            d += 1;
+        }
+        return d;
+    }
+
+    public int newPrimeWithoutEuclides(int P[], int t)
+    {
+        Operations oper = new Operations();
+        int x = oper.maxArray(P, t) + 1;
+        System.out.println(x);
+        while (!prime4(x)) {
+            x++;
+        } 
+        return x;
     }
 }
