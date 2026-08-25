@@ -108,4 +108,17 @@ public class Matrix
         }
         return cp;
     }
+
+    public int [][] matrixProduct(int A[][], int B[][], int mm, int nn, int pp)
+    {
+        int C[][] = new int[TR][TR];
+        for (int i = 0; i < mm; i++) {
+            for (int j = 0; j < nn; j++) {
+                for (int k = 0; k < pp; k++) {
+                    C[i][j] += A[i][k] * B[k][j];
+                }
+            }
+        }
+        return C;
+    }
 }

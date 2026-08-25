@@ -39,6 +39,9 @@ public class Main
     {
         String option;
         Matrix objMat = new Matrix();
+        Matrix matA = new Matrix();
+        Matrix matB = new Matrix();
+        Matrix matC = new Matrix();
         do {
             System.out.println("\n-----Menú matrices-----");    
             System.out.println("0. Regresar");
@@ -49,6 +52,7 @@ public class Main
             System.out.println("5. Diagonal secundaria");
             System.out.println("6. Triangular inferior");
             System.out.println("7. Total números primos");
+            System.out.println("8. Producto matrices");
             System.out.print("Ingrese su opción: ");
             option = input.next();
             switch (option) {
@@ -104,6 +108,31 @@ public class Main
                          System.out.println("Total números primos: " + objMat.countPrimes());
                     } else {
                         System.out.println("No ha creado la matriz");
+                    }
+                    break;
+                case "8":
+                    matA.setM(2);
+                    matA.setN(3);
+                    matB.setM(3);
+                    matB.setN(2);
+                    matC.setM(matA.getM());
+                    matC.setN(matB.getN());
+                    matA.fillMatrix();
+                    matB.fillMatrix();
+                    System.out.println("Matriz A");
+                    matA.showMatrix();
+                    System.out.println("Matriz B");
+                    matB.showMatrix();
+                    int C[][] = matC.matrixProduct(
+                        matA.getMat(), matB.getMat(),
+                        matA.getM(), matA.getN(), matB.getM()
+                    );
+                    System.out.println("Matriz C");
+                    for (int i = 0; i < matC.getM(); i++) {
+                        for (int j = 0; j < matC.getN(); j++) {
+                            System.out.print(C[i][j] + "  ");
+                        }
+                        System.out.println();
                     }
                     break;
                 default:
