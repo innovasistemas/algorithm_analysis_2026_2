@@ -4,9 +4,12 @@ public class Operations
 {
     public void showArray(int P[], int t)
     {
+        String out = "[";
         for (int i = 0; i < t; i++) {
-            System.out.println(P[i] + "\t");
+            out += P[i] + ", ";
         }
+        out += "]";
+        System.out.print(out);
     }
 
     public int sumatory(int V[], int t)
@@ -31,7 +34,7 @@ public class Operations
     {
         int m = V[0];
         for (int i = 1; i < t; i++) {
-            if (m > V[i]) {
+            if (V[i] > m) {
                 m = V[i];
             }
         }

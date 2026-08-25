@@ -72,7 +72,7 @@ public class PrimeNumbers
         int x = oper.product(P, t);
         int y = x + 1;
         int d = 2;
-        while (d > 1 && y % d != 0) {
+        while (y % d != 0) {
             d += 1;
         }
         return d;
