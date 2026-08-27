@@ -80,8 +80,9 @@ public class PrimeNumbers
 
     public int newPrimeWithoutEuclides(int P[], int t)
     {
-        Operations oper = new Operations();
-        int x = oper.maxArray(P, t) + 1;
+        // Operations oper = new Operations();
+        // int x = oper.maxArray(P, t) + 1;
+        int x = P[t - 1] + 1;
         System.out.println(x);
         while (!prime4(x)) {
             x++;
