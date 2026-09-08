@@ -42,3 +42,13 @@ class Operations:
         for i in range(1, m + 1, 1):
             s += 1 / i
         return s
+
+    # Encontrar el MCD (sin Euclides)
+    def mcd(self, a, b) -> int:
+        # maximum = max(a, b)
+        maximum = a if a > b else b 
+        i = maximum
+        print(i)
+        while a % i != 0 or b % i != 0:
+            i -= 1
+        return i

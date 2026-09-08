@@ -4,14 +4,31 @@ from primes import PrimeNumbers
 from operations import Operations
 
 oper = Operations()
-n = int(input("Número n: "))
-if oper.odd_even(n):
-    print(f"{n} es par")
-else:
-    print(f"{n} es impar")
-
-print(f"Serie armónica de 1 a {n}: {oper.harmonic_series(n)}")
-
+op = ""
+while op != "0":
+    print("-----Menú de opciones-----")
+    print("0. Terminar")
+    print("1. Números pares e impares")
+    print("2. Serie armónica")
+    print("3. MCD (sin Euclides)")
+    op = input("Ingrese opción: ")
+    match op:
+        case "0":
+            print("Programa finalizado")
+        case "1":
+            n = int(input("Número n: "))
+            if oper.odd_even(n):
+                print(f"{n} es par")
+            else:
+                print(f"{n} es impar")
+        case "2":
+            print(f"Serie armónica de 1 a {n}: {oper.harmonic_series(n)}")
+        case "3":
+            a = int(input("Número 1: "))
+            b = int(input("Número 2: "))
+            print(f"MCD({a}, {b}) = {oper.mcd(a, b)}")
+        case _:
+            print("Opción no válida")
 
 # prime = PrimeNumbers()
 # start = time.time()
