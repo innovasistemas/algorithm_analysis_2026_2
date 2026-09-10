@@ -11,6 +11,9 @@ while op != "0":
     print("1. Números pares e impares")
     print("2. Serie armónica")
     print("3. MCD (sin Euclides)")
+    print("4. MCD Euclides")
+    print("5. Desconocido")
+    print("6. Descifrar clave")
     op = input("Ingrese opción: ")
     match op:
         case "0":
@@ -27,6 +30,16 @@ while op != "0":
             a = int(input("Número 1: "))
             b = int(input("Número 2: "))
             print(f"MCD({a}, {b}) = {oper.mcd(a, b)}")
+        case "4":
+            a = int(input("Número 1: "))
+            b = int(input("Número 2: "))
+            print(f"MCD Euclides({a}, {b}) = {oper.mcd_Euclides(a, b)}")
+        case "5":
+            a = int(input("Ingrese número: "))
+            print(f"Resultado desconocido: {oper.desconocido(a)}")
+        case "6":
+            key = input("Ingrese clave: ")
+            oper.key_decrypt(key)
         case _:
             print("Opción no válida")
 
