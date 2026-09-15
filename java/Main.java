@@ -24,6 +24,9 @@ public class Main
                 case "1":
                     menuMatrix();
                     break;
+                case "2":
+                    menuVector();
+                    break;
                 case "3":
                     menuPrimos();
                     break;
@@ -134,6 +137,63 @@ public class Main
                             System.out.print(C[i][j] + "  ");
                         }
                         System.out.println();
+                    }
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+                    break;
+            }
+
+        } while (!option.equals("0"));
+    }
+
+    public static void menuVector()
+    {
+        String option;
+        Vector objVec = new Vector();
+        int datum, position;
+        do {
+            System.out.println("\n-----Menú vectores-----");    
+            System.out.println("0. Regresar");
+            System.out.println("1. Agregar dato");
+            System.out.println("2. Mostrar vector");
+            System.out.println("3. Buscar dato (secuencial)");
+            System.out.print("Ingrese su opción: ");
+            option = input.next();
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    if (objVec.getN() < objVec.getT()) {
+                        System.out.print("Dato: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        objVec.addVector(datum);
+                        System.out.println("Dato agregado en el vector");
+                    } else {
+                        System.out.println("Vector lleno");
+                    }
+                    break;
+                case "2":
+                    if (objVec.getN() > 0) {
+                        objVec.showVector();
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
+                case "3":
+                    if (objVec.getN() > 0) {
+                        System.out.print("Dato a buscar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        position = objVec.searchSecuencial(datum);
+                        if (position == -1) {
+                            System.out.println("Dato no encontrado");
+                        } else {
+                            System.out.println("Dato encontrado en posición " + position);
+                        }
+                    } else {
+                        System.out.println("Vector vacío");
                     }
                     break;
                 default:
