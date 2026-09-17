@@ -2,7 +2,7 @@ package com.packages.arrays;
 
 public class Vector 
 {
-    private final int T = 50;
+    private final int T = 100000;
     private int n;
     private int vec[] = new int[T]; 
     
@@ -42,6 +42,16 @@ public class Vector
         n++;
     }
 
+    public void fillVector()
+    {
+        final int LI = -50000; 
+        final int LS = 50000; 
+        for (int i = 0; i < T; i++) {
+            vec[i] = (int)(Math.random() * (LS - LI + 1) + LI);
+        }
+        n = T;
+    }
+
     public void showVector()
     {
         for (int i = 0; i < n; i++) {
@@ -49,7 +59,7 @@ public class Vector
         }
     }
 
-    public int searchSecuencial(int datum)
+    public int searchSequential(int datum)
     {
         int i = 0;
         int pos = -1; //Supuesto: dato no está
@@ -62,4 +72,19 @@ public class Vector
         }
         return pos;
     }
+
+    public void bubbleSort()
+    {
+        int aux;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (vec[i] > vec[j]) {
+                    aux = vec[i];
+                    vec[i] = vec[j];
+                    vec[j] = aux;
+                }
+            }
+        }
+    }
 }
+

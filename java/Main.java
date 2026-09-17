@@ -158,6 +158,8 @@ public class Main
             System.out.println("1. Agregar dato");
             System.out.println("2. Mostrar vector");
             System.out.println("3. Buscar dato (secuencial)");
+            System.out.println("4. Ordenar (burbuja)");
+            System.out.println("5. Llenar vector aleatorio");
             System.out.print("Ingrese su opción: ");
             option = input.next();
             switch (option) {
@@ -186,7 +188,7 @@ public class Main
                         System.out.print("Dato a buscar: ");
                         datum = input.nextInt();
                         input.nextLine();
-                        position = objVec.searchSecuencial(datum);
+                        position = objVec.searchSequential(datum);
                         if (position == -1) {
                             System.out.println("Dato no encontrado");
                         } else {
@@ -195,6 +197,18 @@ public class Main
                     } else {
                         System.out.println("Vector vacío");
                     }
+                    break;
+                case "4":
+                    if (objVec.getN() > 0) {
+                        objVec.bubbleSort();
+                        System.out.println("Vector ordenado");
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
+                case "5":
+                    objVec.fillVector();
+                    System.out.println("Vector llenado con números aleatorios");
                     break;
                 default:
                     System.out.println("Opción no válida");
