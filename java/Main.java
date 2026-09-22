@@ -160,6 +160,9 @@ public class Main
             System.out.println("3. Buscar dato (secuencial)");
             System.out.println("4. Ordenar (burbuja)");
             System.out.println("5. Llenar vector aleatorio");
+            System.out.println("6. Buscar dato (binaria)");
+            System.out.println("7. Ordenar (merge sort)");
+            System.out.println("8. Descifrar mensaje");
             System.out.print("Ingrese su opción: ");
             option = input.next();
             switch (option) {
@@ -209,6 +212,36 @@ public class Main
                 case "5":
                     objVec.fillVector();
                     System.out.println("Vector llenado con números aleatorios");
+                    break;
+                case "6":
+                    if (objVec.getN() > 0) {
+                        System.out.print("Dato a buscar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        position = objVec.searchSequential(datum);
+                        if (position == -1) {
+                            System.out.println("Dato no encontrado");
+                        } else {
+                            System.out.println("Dato encontrado en posición " + position);
+                        }
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
+                case "7":
+                    if (objVec.getN() > 0) {
+                        objVec.sort(objVec.getVec(), 0 , objVec.getN() - 1);
+                        System.out.println("Vector ordenado");
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
+                case "8":
+                    if (objVec.getN() > 0) {
+                        System.out.println("Mensaje: " + objVec.decryptMessage());
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
                     break;
                 default:
                     System.out.println("Opción no válida");
