@@ -154,6 +154,37 @@ public class Vector {
         }
         return msg;
     }
+
+    public void sortSelection()
+    {
+        int i, j, k, m;
+        k = -1;
+        for (i = 0; i < n - 1; i++) {
+            m = vec[i];
+            for (j = i + 1; j < n; j++) {
+                if (vec[j] < m) {
+                    m = vec[j];
+                    k = j;
+                }
+            }
+            vec[k] = vec[i];
+            vec[i] = m;
+        }
+    }
+
+    public void sortInsertion()
+    {
+        int i, k, aux;
+        for (i = 1; i < n; i++) {
+            aux = vec[i];
+            k = i - 1;
+            while (k >= 0 && aux < vec[k]) {
+                vec[k + 1] = vec[k];
+                k--;
+            }
+            vec[k + 1] = aux;
+        }
+    }
 }
 
 

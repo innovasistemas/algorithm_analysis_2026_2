@@ -163,6 +163,8 @@ public class Main
             System.out.println("6. Buscar dato (binaria)");
             System.out.println("7. Ordenar (merge sort)");
             System.out.println("8. Descifrar mensaje");
+            System.out.println("9. Ordenar (selección)");
+            System.out.println("10. Ordenar (inserción)");
             System.out.print("Ingrese su opción: ");
             option = input.next();
             switch (option) {
@@ -239,6 +241,22 @@ public class Main
                 case "8":
                     if (objVec.getN() > 0) {
                         System.out.println("Mensaje: " + objVec.decryptMessage());
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
+                case "9":
+                    if (objVec.getN() > 0) {
+                        objVec.sortSelection();
+                        System.out.println("Vector ordenado");
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
+                case "10":
+                    if (objVec.getN() > 0) {
+                        objVec.sortInsertion();
+                        System.out.println("Vector ordenado");
                     } else {
                         System.out.println("Vector vacío");
                     }
