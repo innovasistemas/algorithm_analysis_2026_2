@@ -1,6 +1,7 @@
 import com.packages.arrays.*;
 import com.packages.primes.*;
 import com.packages.utils.*;
+import com.packages.linked_list.*;
 import java.util.Scanner;
 
 public class Main
@@ -15,6 +16,7 @@ public class Main
             System.out.println("1. Matrices");
             System.out.println("2. Vectores");
             System.out.println("3. Primos");
+            System.out.println("4. Listas Ligadas");
             System.out.print("Ingrese su opción: ");
             option = input.next();
             switch (option) {
@@ -29,6 +31,9 @@ public class Main
                     break;
                 case "3":
                     menuPrimos();
+                    break;
+                case "4":
+                    menuLinkedList();
                     break;
                 default:
                     System.out.println("Opción no válida");
@@ -300,6 +305,59 @@ public class Main
                 case "3":
                     P1[++t1] = prime.newPrimeWithoutEuclides(P1, t1);
                     oper.showArray(P1, t1);
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+                    break;
+            }
+
+        } while (!option.equals("0"));
+    }
+
+    public static void menuLinkedList()
+    {
+        String option;
+        int datum;
+        LinkedSimpleList list = new LinkedSimpleList();
+        NodeLSL q;
+        do {
+            System.out.println("\n-----Menú Listas Ligadas-----");    
+            System.out.println("0. Regresar");
+            System.out.println("1. Agregar nodo");
+            System.out.println("2. Mostrar lista");
+            System.out.println("3. Buscar dato");
+            System.out.print("Ingrese su opción: ");
+            option = input.next();
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    System.out.print("Dato: ");
+                    datum = input.nextInt();
+                    input.nextLine();
+                    list.addNodeLSLBegin(datum);
+                    break;
+                case "2":
+                    if (list.head != null) {
+                        list.showLSL();
+                    } else {
+                        System.out.println("Lista vacía");
+                    }
+                    break;
+                case "3":
+                    if (list.head != null) {
+                        System.out.print("Dato a buscar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        q = list.searchNodeLSL(datum);
+                        if (q != null) {
+                            System.out.println("Dato encontrado en dirección " + q);
+                        } else {
+                            System.out.println("El dato no existe en la lista");
+                        }
+                    } else {
+                        System.out.println("Lista vacía");
+                    }
                     break;
                 default:
                     System.out.println("Opción no válida");
