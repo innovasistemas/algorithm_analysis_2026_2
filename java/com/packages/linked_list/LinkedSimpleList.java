@@ -46,4 +46,28 @@ public class LinkedSimpleList
         }
         return q;
     }
+
+    public boolean deleteNodeLSL(int datum)
+    {
+        boolean sw = false;
+        if (head.info == datum) {
+            head = head.link;
+            n--;
+            sw = true;
+        } else {
+            NodeLSL q = head;
+            NodeLSL p = q.link;
+            while (!sw && p != null) {
+                if (p.info == datum) {
+                    q.link = p.link;
+                    n--;
+                    sw = true;
+                } else {
+                    p = p.link;
+                    q = q.link;
+                }
+            }
+        }
+        return sw;
+    }
 }

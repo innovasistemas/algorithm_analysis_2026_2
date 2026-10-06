@@ -326,6 +326,7 @@ public class Main
             System.out.println("1. Agregar nodo");
             System.out.println("2. Mostrar lista");
             System.out.println("3. Buscar dato");
+            System.out.println("4. Eliminar dato");
             System.out.print("Ingrese su opción: ");
             option = input.next();
             switch (option) {
@@ -352,6 +353,20 @@ public class Main
                         q = list.searchNodeLSL(datum);
                         if (q != null) {
                             System.out.println("Dato encontrado en dirección " + q);
+                        } else {
+                            System.out.println("El dato no existe en la lista");
+                        }
+                    } else {
+                        System.out.println("Lista vacía");
+                    }
+                    break;
+                case "4":
+                    if (list.head != null) {
+                        System.out.print("Dato a eliminar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        if (list.deleteNodeLSL(datum)) {
+                            System.out.println("Nodo eliminado correctamente");
                         } else {
                             System.out.println("El dato no existe en la lista");
                         }

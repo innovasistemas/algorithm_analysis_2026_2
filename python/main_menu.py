@@ -14,6 +14,7 @@ while op != "0":
     print("4. MCD Euclides")
     print("5. Desconocido")
     print("6. Descifrar clave")
+    print("7. Imprimir triángulo rectángulo")
     op = input("Ingrese opción: ")
     match op:
         case "0":
@@ -40,6 +41,9 @@ while op != "0":
         case "6":
             key = input("Ingrese clave: ")
             oper.key_decrypt(key)
+        case "7":
+            h = int(input("Ingrese altura: "))
+            oper.triangle_rect(h)
         case _:
             print("Opción no válida")
 

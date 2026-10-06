@@ -92,3 +92,8 @@ class Operations:
                 j+=1
             i+=1
 
+    def triangle_rect(self, h) -> None:
+        for i in range(1, h + 1):
+            print(" " * (h - i), "*" * i)
+    
+
