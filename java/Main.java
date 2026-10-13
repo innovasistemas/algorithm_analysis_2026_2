@@ -1,4 +1,5 @@
 import com.packages.arrays.*;
+import com.packages.graphs.Graph;
 import com.packages.primes.*;
 import com.packages.utils.*;
 import com.packages.linked_list.*;
@@ -17,6 +18,7 @@ public class Main
             System.out.println("2. Vectores");
             System.out.println("3. Primos");
             System.out.println("4. Listas Ligadas");
+            System.out.println("5. Grafos");
             System.out.print("Ingrese su opción: ");
             option = input.next();
             switch (option) {
@@ -34,6 +36,9 @@ public class Main
                     break;
                 case "4":
                     menuLinkedList();
+                    break;
+                case "5":
+                    menuGraphs();
                     break;
                 default:
                     System.out.println("Opción no válida");
@@ -381,4 +386,127 @@ public class Main
 
         } while (!option.equals("0"));
     }
+
+    public static void menuGraphs()
+    {
+        String option;
+        Graph objGraph = new Graph();
+        int datum, position;
+        do {
+            System.out.println("\n-----Menú Grafos-----");    
+            System.out.println("0. Regresar");
+            System.out.println("1. Agregar vértice");
+            System.out.println("2. Mostrar vértices");
+            // System.out.println("3. Buscar dato (secuencial)");
+            // System.out.println("4. Ordenar (burbuja)");
+            // System.out.println("5. Llenar vector aleatorio");
+            // System.out.println("6. Buscar dato (binaria)");
+            // System.out.println("7. Ordenar (merge sort)");
+            // System.out.println("8. Descifrar mensaje");
+            // System.out.println("9. Ordenar (selección)");
+            // System.out.println("10. Ordenar (inserción)");
+            System.out.print("Ingrese su opción: ");
+            option = input.next();
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    if (objGraph.getN() < objGraph.getT()) {
+                        System.out.print("Dato: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        objGraph.addVertex(datum);
+                        System.out.println("Dato agregado en el grafo");
+                    } else {
+                        System.out.println("Grafo lleno");
+                    }
+                    break;
+                case "2":
+                    if (objGraph.getN() > 0) {
+                        objGraph.showVertex();
+                    } else {
+                        System.out.println("Grafo vacío");
+                    }
+                    break;
+                // case "3":
+                //     if (objVec.getN() > 0) {
+                //         System.out.print("Dato a buscar: ");
+                //         datum = input.nextInt();
+                //         input.nextLine();
+                //         position = objVec.searchSequential(datum);
+                //         if (position == -1) {
+                //             System.out.println("Dato no encontrado");
+                //         } else {
+                //             System.out.println("Dato encontrado en posición " + position);
+                //         }
+                //     } else {
+                //         System.out.println("Vector vacío");
+                //     }
+                //     break;
+                // case "4":
+                //     if (objVec.getN() > 0) {
+                //         objVec.bubbleSort();
+                //         System.out.println("Vector ordenado");
+                //     } else {
+                //         System.out.println("Vector vacío");
+                //     }
+                //     break;
+                // case "5":
+                //     objVec.fillVector();
+                //     System.out.println("Vector llenado con números aleatorios");
+                //     break;
+                // case "6":
+                //     if (objVec.getN() > 0) {
+                //         System.out.print("Dato a buscar: ");
+                //         datum = input.nextInt();
+                //         input.nextLine();
+                //         position = objVec.searchSequential(datum);
+                //         if (position == -1) {
+                //             System.out.println("Dato no encontrado");
+                //         } else {
+                //             System.out.println("Dato encontrado en posición " + position);
+                //         }
+                //     } else {
+                //         System.out.println("Vector vacío");
+                //     }
+                //     break;
+                // case "7":
+                //     if (objVec.getN() > 0) {
+                //         objVec.sort(objVec.getVec(), 0 , objVec.getN() - 1);
+                //         System.out.println("Vector ordenado");
+                //     } else {
+                //         System.out.println("Vector vacío");
+                //     }
+                //     break;
+                // case "8":
+                //     if (objVec.getN() > 0) {
+                //         System.out.println("Mensaje: " + objVec.decryptMessage());
+                //     } else {
+                //         System.out.println("Vector vacío");
+                //     }
+                //     break;
+                // case "9":
+                //     if (objVec.getN() > 0) {
+                //         objVec.sortSelection();
+                //         System.out.println("Vector ordenado");
+                //     } else {
+                //         System.out.println("Vector vacío");
+                //     }
+                //     break;
+                // case "10":
+                //     if (objVec.getN() > 0) {
+                //         objVec.sortInsertion();
+                //         System.out.println("Vector ordenado");
+                //     } else {
+                //         System.out.println("Vector vacío");
+                //     }
+                //     break;
+                default:
+                    System.out.println("Opción no válida");
+                    break;
+            }
+
+        } while (!option.equals("0"));
+    }
+
 }
