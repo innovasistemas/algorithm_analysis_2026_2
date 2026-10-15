@@ -551,7 +551,7 @@ public class Main
                         input.nextLine();
                         position1 = objGraph.searchVertex(datum);
                         if (position1 != -1) {
-                            objGraph v = objGraph.getRecVertex(position1);
+                            Vertex v = objGraph.getVertex(position1);
                             objLDL.showLDL(v.linkRight);
                         } else {
                             System.out.println("El nodo no existe");
