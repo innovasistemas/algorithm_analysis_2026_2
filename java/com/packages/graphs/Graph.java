@@ -32,10 +32,23 @@ public class Graph
         this.n = n;
     }
 
+    public void setInfo(int pos, int datum) {
+        recVertex[pos].vertex = datum;
+    }
+
+    public Vertex getVertex(int pos) {
+        return recVertex[pos];
+    }
+
+    public void setLink(int pos, NodeLDL dir) {
+        recVertex[pos].linkRight = dir;
+    }
+
     public void addVertex(int datum) {
         recVertex[n] = new Vertex();
         recVertex[n].vertex = datum;
-        recVertex[n].link = null;
+        recVertex[n].linkRight = null;
+        recVertex[n].linkLeft = null;
         n++;
     }
 
@@ -44,6 +57,18 @@ public class Graph
             System.out.print(recVertex[i].vertex + " | ");
         }
     }
-   
+
+    public int searchVertex(int datum) {
+        int i = 0;
+        int pos = -1; // Supuesto: dato no está
+        while (pos == -1 && i < n) {
+            if (recVertex[i].vertex == datum) {
+                pos = i;
+            } else {
+                i++;
+            }
+        }
+        return pos;
+    } 
 
 }

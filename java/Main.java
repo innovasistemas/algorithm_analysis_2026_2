@@ -18,7 +18,8 @@ public class Main
             System.out.println("2. Vectores");
             System.out.println("3. Primos");
             System.out.println("4. Listas Ligadas");
-            System.out.println("5. Grafos");
+            System.out.println("5. Listas Doblemente Ligadas");
+            System.out.println("6. Grafos");
             System.out.print("Ingrese su opción: ");
             option = input.next();
             switch (option) {
@@ -38,6 +39,9 @@ public class Main
                     menuLinkedList();
                     break;
                 case "5":
+                    menuLinkedList();
+                    break;
+                case "6":
                     menuGraphs();
                     break;
                 default:
@@ -326,7 +330,7 @@ public class Main
         LinkedSimpleList list = new LinkedSimpleList();
         NodeLSL q;
         do {
-            System.out.println("\n-----Menú Listas Ligadas-----");    
+            System.out.println("\n-----Menú Listas Doblemente Ligadas-----");    
             System.out.println("0. Regresar");
             System.out.println("1. Agregar nodo");
             System.out.println("2. Mostrar lista");
@@ -387,16 +391,93 @@ public class Main
         } while (!option.equals("0"));
     }
 
+    public static void menuDoubleLinkedList()
+    {
+        String option;
+        int datum;
+        LinkedDoubleList list = new LinkedDoubleList();
+        NodeLDL q;
+        do {
+            System.out.println("\n-----Menú Listas Doblemente Ligadas-----");    
+            System.out.println("0. Regresar");
+            System.out.println("1. Agregar nodo");
+            System.out.println("2. Mostrar lista");
+            System.out.println("3. Buscar dato");
+            System.out.println("4. Eliminar dato");
+            System.out.print("Ingrese su opción: ");
+            option = input.next();
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    System.out.print("Dato: ");
+                    datum = input.nextInt();
+                    input.nextLine();
+                    list.addNodeLDLEnd(datum);
+                    System.out.println("Nodo agregado a la lista");
+                    break;
+                case "2":
+                    if (list.head != null) {
+                        list.showLDL(list.head);
+                    } else {
+                        System.out.println("Lista vacía");
+                    }
+                    break;
+                // case "3":
+                //     if (list.head != null) {
+                //         System.out.print("Dato a buscar: ");
+                //         datum = input.nextInt();
+                //         input.nextLine();
+                //         q = list.searchNodeLSL(datum);
+                //         if (q != null) {
+                //             System.out.println("Dato encontrado en dirección " + q);
+                //         } else {
+                //             System.out.println("El dato no existe en la lista");
+                //         }
+                //     } else {
+                //         System.out.println("Lista vacía");
+                //     }
+                //     break;
+                // case "4":
+                //     if (list.head != null) {
+                //         System.out.print("Dato a eliminar: ");
+                //         datum = input.nextInt();
+                //         input.nextLine();
+                //         if (list.deleteNodeLSL(datum)) {
+                //             System.out.println("Nodo eliminado correctamente");
+                //         } else {
+                //             System.out.println("El dato no existe en la lista");
+                //         }
+                //     } else {
+                //         System.out.println("Lista vacía");
+                //     }
+                //     break;
+                default:
+                    System.out.println("Opción no válida");
+                    break;
+            }
+
+        } while (!option.equals("0"));
+    }
+
+    
+
     public static void menuGraphs()
     {
         String option;
+        int datum, position1, position2;
         Graph objGraph = new Graph();
-        int datum, position;
+        LinkedDoubleList objLDL = new LinkedDoubleList();
+        NodeLDL p;
+        // LinkedSimpleList objLSL = new LinkedSimpleList();
         do {
             System.out.println("\n-----Menú Grafos-----");    
             System.out.println("0. Regresar");
             System.out.println("1. Agregar vértice");
             System.out.println("2. Mostrar vértices");
+            System.out.println("3. Agregar adyacencia");
+            System.out.println("4. Mostrar adyacencia");
+
             // System.out.println("3. Buscar dato (secuencial)");
             // System.out.println("4. Ordenar (burbuja)");
             // System.out.println("5. Llenar vector aleatorio");
@@ -426,6 +507,57 @@ public class Main
                         objGraph.showVertex();
                     } else {
                         System.out.println("Grafo vacío");
+                    }
+                    break;
+                case "3":
+                    if (objGraph.getN() > 0) {
+                        objGraph.showVertex();
+                        System.out.println();
+                        System.out.print("Agregar adyacencia al nodo: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        position1 = objGraph.searchVertex(datum);
+                        if (position1 != -1) {
+                            System.out.print("Nodo adyacente: ");
+                            datum = input.nextInt();
+                            input.nextLine();
+                            position2 = objGraph.searchVertex(datum);
+                            if (position2 != -1) {
+                                if (position1 != position2) {
+                                    p = objLDL.addNodeLDLEnd(datum);
+                                    if (objLDL.head != null) {
+                                        objGraph.setLink(position1, p);
+                                    }
+                                } else {
+                                    System.out.println("El nodo no puede tener adyacencia cíclica");
+                                }
+                            } else {
+                                System.out.println("El nodo no existe");
+                            }
+
+                        } else {
+                            System.out.println("El nodo no existe");
+                        }
+                    } else {
+                        System.out.println("Lista vacía");
+                    }
+                    break;
+                case "4":
+                    if (objGraph.getN() > 0) {
+                        objGraph.showVertex();
+                        System.out.println();
+                        System.out.print("Mostrar adyacencia del nodo: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        position1 = objGraph.searchVertex(datum);
+                        if (position1 != -1) {
+                            objGraph v = objGraph.getRecVertex(position1);
+                            objLDL.showLDL(v.linkRight);
+                        } else {
+                            System.out.println("El nodo no existe");
+                        }
+                    } else {
+                        System.out.println("El nodo no existe");
                     }
                     break;
                 // case "3":

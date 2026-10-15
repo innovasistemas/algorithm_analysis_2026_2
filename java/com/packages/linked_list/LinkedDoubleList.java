@@ -13,7 +13,7 @@ public class LinkedDoubleList
         n = 0;
     }
 
-    public void addNodeLDLEnd(int datum)
+    public NodeLDL addNodeLDLEnd(int datum)
     {
         NodeLDL p = new NodeLDL();
         p.info = datum;
@@ -26,11 +26,12 @@ public class LinkedDoubleList
         p.rl = null;
         last = p;
         n++;
+        return p;
     }
 
-    public void showLDL()
+    public void showLDL(NodeLDL h)
     {
-        NodeLDL p = head;
+        NodeLDL p = h;
         System.out.println("Total nodos: " + n);
         while (p != null) {
             System.out.print("Información: [" + p.info + "] --->");
