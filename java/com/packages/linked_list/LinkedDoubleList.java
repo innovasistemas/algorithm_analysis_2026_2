@@ -4,7 +4,7 @@ public class LinkedDoubleList
 {
     public NodeLDL head;
     public NodeLDL last;
-    private int n;
+    public int n;
 
     public LinkedDoubleList()
     {
@@ -12,6 +12,8 @@ public class LinkedDoubleList
         last = null;
         n = 0;
     }
+
+
 
     public NodeLDL addNodeLDLEnd(int datum)
     {
@@ -34,7 +36,7 @@ public class LinkedDoubleList
         NodeLDL p = h;
         System.out.println("Total nodos: " + n);
         while (p != null) {
-            System.out.print("Información: [" + p.info + "] --->");
+            System.out.print("[" + p.info + "] --->");
             p = p.rl;
         }
     }

@@ -39,7 +39,7 @@ public class Main
                     menuLinkedList();
                     break;
                 case "5":
-                    menuLinkedList();
+                    menuDoubleLinkedList();
                     break;
                 case "6":
                     menuGraphs();
@@ -525,21 +525,22 @@ public class Main
                             if (position2 != -1) {
                                 if (position1 != position2) {
                                     p = objLDL.addNodeLDLEnd(datum);
-                                    if (objLDL.head != null) {
+                                    // if (objLDL.head == null) {
+                                    if (objLDL.n == 1) {
                                         objGraph.setLink(position1, p);
                                     }
                                 } else {
                                     System.out.println("El nodo no puede tener adyacencia cíclica");
                                 }
                             } else {
-                                System.out.println("El nodo no existe");
+                                System.out.println("El nodo no existe. No puede agregrarlo como adyacente");
                             }
 
                         } else {
-                            System.out.println("El nodo no existe");
+                            System.out.println("El nodo no existe. No puede crear adyacencia para este nodo");
                         }
                     } else {
-                        System.out.println("Lista vacía");
+                        System.out.println("Grafo vacío");
                     }
                     break;
                 case "4":
@@ -551,13 +552,14 @@ public class Main
                         input.nextLine();
                         position1 = objGraph.searchVertex(datum);
                         if (position1 != -1) {
-                            Vertex v = objGraph.getVertex(position1);
-                            objLDL.showLDL(v.linkRight);
+                            // Vertex v = objGraph.getVertex(position1);
+                            // objLDL.showLDL(v.linkRight);
+                            objLDL.showLDL(objGraph.getVertex(position1).linkRight);
                         } else {
                             System.out.println("El nodo no existe");
                         }
                     } else {
-                        System.out.println("El nodo no existe");
+                        System.out.println("Grafo vacío");
                     }
                     break;
                 // case "3":

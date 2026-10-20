@@ -41,6 +41,9 @@ public class Graph
     }
 
     public void setLink(int pos, NodeLDL dir) {
+        System.out.println(pos);
+        System.out.println(dir);
+
         recVertex[pos].linkRight = dir;
     }
 
