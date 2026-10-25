@@ -515,19 +515,19 @@ public class Main
                                     if (objGraph.getVertex(position1).adyacencyList == null) {
                                         objGraph.setLink(position1, new LinkedDoubleList());
                                         objGraph.getVertex(position1).adyacencyList.addNodeLDLEnd(datum);
+                                        System.out.println("Adyacencia agregada");
                                     } else if (objGraph.getVertex(position1).adyacencyList.searchNodeLDL(datum) == null) {
                                         objGraph.getVertex(position1).adyacencyList.addNodeLDLEnd(datum);
+                                        System.out.println("Adyacencia agregada");
                                     } else {
                                         System.out.println("El nodo ya existe en la adyacencia");
                                     }
-                                    System.out.println("Adyacencia agregada");
                                 } else {
                                     System.out.println("El nodo no puede tener adyacencia cíclica");
                                 }
                             } else {
                                 System.out.println("El nodo no existe. No puede agregrarlo como adyacente");
                             }
-
                         } else {
                             System.out.println("El nodo no existe. No puede crear adyacencia para este nodo");
                         }
