@@ -13,47 +13,51 @@ public class LinkedDoubleList
         n = 0;
     }
 
-
-
-    public NodeLDL addNodeLDLEnd(int datum)
+    public void addNodeLDLEnd(int datum)
     {
         NodeLDL p = new NodeLDL();
         p.info = datum;
         if (head == null) {
             head = p;
         } else {
-            last.rl = p;
+            last.rightLink = p;
         }
-        p.ll = last;
-        p.rl = null;
+        p.leftLink = last;
+        p.rightLink = null;
         last = p;
         n++;
-        return p;
     }
 
-    public void showLDL(NodeLDL h)
+    public void showLDL()
     {
-        NodeLDL p = h;
+        NodeLDL p = head;
         System.out.println("Total nodos: " + n);
         while (p != null) {
-            System.out.print("[" + p.info + "] --->");
-            p = p.rl;
+            if (p.rightLink != null) {
+                if (p.leftLink != null) {
+                    System.out.print("<---[ " + p.info + " ]---> ");
+                } else {
+                    System.out.print("|||---[ " + p.info + " ]---> ");
+                }
+            } else {
+                if (p.leftLink != null) {
+                    System.out.print("<---[ " + p.info + " ]---||| ");
+                } else {
+                    System.out.print("|||---[ " + p.info + " ]---||| ");
+                }
+            }
+            p = p.rightLink;
         }
     }
 
-    // public NodeLSL searchNodeLSL(int datum)
-    // {
-    //     NodeLSL p = head;
-    //     NodeLSL q = null;
-    //     while (p != null && q == null) {
-    //         if (p.info == datum) {
-    //             q = p;
-    //         } else {
-    //             p = p.link;
-    //         }
-    //     }
-    //     return q;
-    // }
+    public NodeLDL searchNodeLDL(int datum)
+    {
+        NodeLDL p = head;
+        while (p != null && p.info != datum) {
+            p = p.rightLink;
+        }
+        return p;
+    }
 
     // public boolean deleteNodeLSL(int datum)
     // {

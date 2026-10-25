@@ -1,11 +1,10 @@
 package com.packages.graphs;
-import com.packages.arrays.*;
 import com.packages.linked_list.*;
 
 public class Graph 
 {
     private final int T = 20;
-    private Vertex recVertex[] = new Vertex[T];
+    private Vertex arrayVertex[] = new Vertex[T];
     private int n;
 
     public Graph() {
@@ -16,12 +15,12 @@ public class Graph
         return T;
     }
 
-    public Vertex[] getRecVertex() {
-        return recVertex;
+    public Vertex[] getArrayVertex() {
+        return arrayVertex;
     }
 
-    public void setRecVertex(Vertex[] recVertex) {
-        this.recVertex = recVertex;
+    public void setArrayVertex(Vertex[] arrayVertex) {
+        this.arrayVertex = arrayVertex;
     }
 
     public int getN() {
@@ -33,45 +32,59 @@ public class Graph
     }
 
     public void setInfo(int pos, int datum) {
-        recVertex[pos].vertex = datum;
+        arrayVertex[pos].vertex = datum;
+    }
+
+    public void setLink(int pos, LinkedDoubleList list) {
+        arrayVertex[pos].adyacencyList = list;
     }
 
     public Vertex getVertex(int pos) {
-        return recVertex[pos];
+        return arrayVertex[pos];
     }
 
-    public void setLink(int pos, NodeLDL dir) {
-        System.out.println(pos);
-        System.out.println(dir);
-
-        recVertex[pos].linkRight = dir;
+    public void resetSearchField() {
+        for (int i = 0; i < n; i++) {
+            arrayVertex[i].visited = false;
+            arrayVertex[i].predecessor = -1;
+        }
     }
 
     public void addVertex(int datum) {
-        recVertex[n] = new Vertex();
-        recVertex[n].vertex = datum;
-        recVertex[n].linkRight = null;
-        recVertex[n].linkLeft = null;
+        arrayVertex[n] = new Vertex();
+        arrayVertex[n].vertex = datum;
+        arrayVertex[n].adyacencyList = null; // Nodo sin lista de adyacencia
+
+        // Inicialización para los algoritmos de caminos
+        arrayVertex[n].visited = false; // Ningún nodo inicia visitado
+        arrayVertex[n].predecessor = -1; // Sin antecesor aún
         n++;
     }
 
     public void showVertex() {
+        System.out.println("Nodos del grafo");
+        System.out.print("  ");
         for (int i = 0; i < n; i++) {
-            System.out.print(recVertex[i].vertex + " | ");
+            System.out.print("-----");
+        }
+        System.out.println();
+        for (int i = 0; i < n; i++) {
+            System.out.print(" | " + arrayVertex[i].vertex);
+        }
+        System.out.print(" | ");
+        System.out.println();
+        System.out.print("  ");
+        for (int i = 0; i < n; i++) {
+            System.out.print("-----");
         }
     }
 
     public int searchVertex(int datum) {
         int i = 0;
-        int pos = -1; // Supuesto: dato no está
-        while (pos == -1 && i < n) {
-            if (recVertex[i].vertex == datum) {
-                pos = i;
-            } else {
-                i++;
-            }
+        while (i < n && arrayVertex[i].vertex != datum) {
+            i++;
         }
-        return pos;
+        return i;
     } 
 
 }
