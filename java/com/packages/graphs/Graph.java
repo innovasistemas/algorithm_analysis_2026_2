@@ -78,6 +78,21 @@ public class Graph
             System.out.print("-----");
         }
     }
+    
+    public void showGraph() {
+        System.out.println("Grafo completo");
+        for (int i = 0; i < n; i++) {
+            System.out.println("  -----");
+            System.out.print(" | " + arrayVertex[i].vertex + " |---> ");
+            if (arrayVertex[i].adyacencyList != null) {
+                arrayVertex[i].adyacencyList.showLDL();
+            } else {
+                System.out.print(" ---|||");
+            }
+            System.out.print("\n");
+            System.out.println("  -----");
+        } 
+    }
 
     public int searchVertex(int datum) {
         int i = 0;

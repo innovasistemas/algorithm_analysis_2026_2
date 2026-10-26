@@ -470,6 +470,7 @@ public class Main
             System.out.println("2. Mostrar vértices");
             System.out.println("3. Agregar adyacencia");
             System.out.println("4. Mostrar adyacencia");
+            System.out.println("5. Mostrar grafo");
             System.out.print("Ingrese su opción: ");
             option = input.next();
             switch (option) {
@@ -552,6 +553,13 @@ public class Main
                         } else {
                             System.out.println("El nodo no existe");
                         }
+                    } else {
+                        System.out.println("Grafo vacío");
+                    }
+                }
+                case "5" -> {
+                    if (objGraph.getN() > 0) {
+                        objGraph.showGraph();
                     } else {
                         System.out.println("Grafo vacío");
                     }

@@ -31,7 +31,6 @@ public class LinkedDoubleList
     public void showLDL()
     {
         NodeLDL p = head;
-        System.out.println("Total nodos: " + n);
         while (p != null) {
             if (p.rightLink != null) {
                 if (p.leftLink != null) {
@@ -48,6 +47,7 @@ public class LinkedDoubleList
             }
             p = p.rightLink;
         }
+        System.out.print("Nodos: " + n);
     }
 
     public NodeLDL searchNodeLDL(int datum)
