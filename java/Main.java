@@ -396,6 +396,7 @@ public class Main
         String option;
         int datum;
         LinkedDoubleList list = new LinkedDoubleList();
+        NodeLDL direction;
         do {
             System.out.println("\n-----Menú Listas Doblemente Ligadas-----");    
             System.out.println("0. Regresar");
@@ -436,25 +437,25 @@ public class Main
                     } else {
                         System.out.println("Lista vacía");
                     }
-
                 }
                 default -> System.out.println("Opción no válida");
+                case "4" -> {
+                    if (list.head != null) {
+                        System.out.print("Dato a eliminar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        direction = list.searchNodeLDL(datum);
+                        if (direction != null) {
+                            list.deleteNodeLDL(direction);
+                            System.out.println("Nodo eliminado correctamente");
+                        } else {
+                            System.out.println("El dato no existe en la lista");
+                        }
+                    } else {
+                        System.out.println("Lista vacía");
+                    }
+                }
             }
-            // case "4":
-            //     if (list.head != null) {
-            //         System.out.print("Dato a eliminar: ");
-            //         datum = input.nextInt();
-            //         input.nextLine();
-            //         if (list.deleteNodeLSL(datum)) {
-            //             System.out.println("Nodo eliminado correctamente");
-            //         } else {
-            //             System.out.println("El dato no existe en la lista");
-            //         }
-            //     } else {
-            //         System.out.println("Lista vacía");
-            //     }
-            //     break;
-            
         } while (!option.equals("0"));
     }
   
@@ -463,6 +464,7 @@ public class Main
         String option;
         int datum, position1, position2;
         Graph objGraph = new Graph();
+        NodeLDL direction;
         do {
             System.out.println("\n-----Menú Grafos-----");    
             System.out.println("0. Regresar");
@@ -471,6 +473,7 @@ public class Main
             System.out.println("3. Agregar adyacencia");
             System.out.println("4. Mostrar adyacencia");
             System.out.println("5. Mostrar grafo");
+            System.out.println("6. Eliminar adyacencia");
             System.out.print("Ingrese su opción: ");
             option = input.next();
             switch (option) {
@@ -560,6 +563,39 @@ public class Main
                 case "5" -> {
                     if (objGraph.getN() > 0) {
                         objGraph.showGraph();
+                    } else {
+                        System.out.println("Grafo vacío");
+                    }
+                }
+                case "6" -> {
+                    if (objGraph.getN() > 0) {
+                        objGraph.showGraph();
+                        System.out.println();
+                        System.out.print("Elimiar adyacencia del nodo: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        position1 = objGraph.searchVertex(datum);
+                        if (position1 < objGraph.getN()) {
+                            System.out.print("Nodo adyacente a eliminar: ");
+                            datum = input.nextInt();
+                            input.nextLine();
+                            if (objGraph.getVertex(position1).adyacencyList != null) {
+                                direction = objGraph.getVertex(position1).adyacencyList.searchNodeLDL(datum);
+                                if (direction != null) {
+                                    if (objGraph.getVertex(position1).adyacencyList.deleteNodeLDL(direction)) {
+                                        System.out.println("Nodo eliminado en la adyacencia de " + objGraph.getVertex(position1).vertex);
+                                    } else {
+                                        System.out.println("No se eliminó ningún nodo");
+                                    }
+                                } else {
+                                    System.out.println("El nodo no existe en la adyacencia de " + objGraph.getVertex(position1).vertex);
+                                }
+                            } else {
+                                System.out.println("El nodo no tiene adyacencia");
+                            }
+                        } else {
+                            System.out.println("El nodo no existe");
+                        }
                     } else {
                         System.out.println("Grafo vacío");
                     }

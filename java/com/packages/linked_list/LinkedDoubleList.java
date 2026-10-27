@@ -59,27 +59,21 @@ public class LinkedDoubleList
         return p;
     }
 
-    // public boolean deleteNodeLSL(int datum)
-    // {
-    //     boolean sw = false;
-    //     if (head.info == datum) {
-    //         head = head.link;
-    //         n--;
-    //         sw = true;
-    //     } else {
-    //         NodeLSL q = head;
-    //         NodeLSL p = q.link;
-    //         while (!sw && p != null) {
-    //             if (p.info == datum) {
-    //                 q.link = p.link;
-    //                 n--;
-    //                 sw = true;
-    //             } else {
-    //                 p = p.link;
-    //                 q = q.link;
-    //             }
-    //         }
-    //     }
-    //     return sw;
-    // }
+    public boolean deleteNodeLDL(NodeLDL dir)
+    {
+        boolean flag = false;
+        if (head == dir) {
+            head = head.rightLink;
+            n--;
+            flag = true;
+        } else {
+            dir.leftLink.rightLink = dir.rightLink;
+            if (dir.rightLink != null) {
+                dir.rightLink.leftLink = dir.leftLink;
+            }
+            n--;
+            flag = true;
+        }
+        return flag;
+    }
 }
