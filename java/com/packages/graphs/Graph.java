@@ -102,4 +102,18 @@ public class Graph
         return i;
     } 
 
+    public boolean adyacencyNode(int pos, int datum) {
+        return arrayVertex[pos].adyacencyList.searchNodeLDL(datum) != null;
+    }
+
+    public int countEdges() {
+        int totalEdges = 0;
+        for (int i = 0; i < n; i++) {
+            if (arrayVertex[i].adyacencyList != null) {
+                totalEdges += arrayVertex[i].adyacencyList.n;
+            }
+        }
+        return totalEdges;
+    }
+
 }

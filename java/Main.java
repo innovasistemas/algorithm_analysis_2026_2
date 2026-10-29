@@ -474,6 +474,8 @@ public class Main
             System.out.println("4. Mostrar adyacencia");
             System.out.println("5. Mostrar grafo");
             System.out.println("6. Eliminar adyacencia");
+            System.out.println("7. Determinar adyacencia");
+            System.out.println("8. Total aristas del grafo");
             System.out.print("Ingrese su opción: ");
             option = input.next();
             switch (option) {
@@ -571,7 +573,7 @@ public class Main
                     if (objGraph.getN() > 0) {
                         objGraph.showGraph();
                         System.out.println();
-                        System.out.print("Elimiar adyacencia del nodo: ");
+                        System.out.print("Eliminar adyacencia del nodo: ");
                         datum = input.nextInt();
                         input.nextLine();
                         position1 = objGraph.searchVertex(datum);
@@ -596,6 +598,40 @@ public class Main
                         } else {
                             System.out.println("El nodo no existe");
                         }
+                    } else {
+                        System.out.println("Grafo vacío");
+                    }
+                }
+                case "7" -> {
+                    if (objGraph.getN() > 0) {
+                        objGraph.showVertex();
+                        System.out.println();
+                        System.out.print("Determinar adyacencia del nodo: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        position1 = objGraph.searchVertex(datum);
+                        if (position1 < objGraph.getN()) {
+                            System.out.print("Nodo adyacente a determinar: ");
+                            datum = input.nextInt();
+                            input.nextLine();
+                            if (objGraph.adyacencyNode(position1, datum)) {
+                                System.out.println(datum + " es adyacente a " + 
+                                    objGraph.getVertex(position1).vertex);
+                            } else {
+                                System.out.println(datum + " no es adyacente a " + 
+                                    objGraph.getVertex(position1).vertex);
+                            }
+                        } else {
+                            System.out.println("El nodo no existe");
+                        }
+                    } else {
+                        System.out.println("Grafo vacío");
+                    }
+                }
+                case "8" -> {
+                    if (objGraph.getN() > 0) {
+                        objGraph.showGraph();
+                        System.out.println("Total aristas: " + objGraph.countEdges());
                     } else {
                         System.out.println("Grafo vacío");
                     }
