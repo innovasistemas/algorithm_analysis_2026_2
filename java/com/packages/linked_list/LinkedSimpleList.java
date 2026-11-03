@@ -33,6 +33,14 @@ public class LinkedSimpleList
         }
     }
 
+    public void showLSLRecursive(NodeLSL p) 
+    {
+        if (p != null) {
+            System.out.println(p.info);
+            showLSLRecursive(p.link);
+        }
+    }
+
     public NodeLSL searchNodeLSL(int datum)
     {
         NodeLSL p = head;

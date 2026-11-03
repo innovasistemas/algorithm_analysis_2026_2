@@ -61,6 +61,13 @@ class Operations:
             b = aux % b
         return a
 
+    # MCD Euclides Recursivo
+    def mcd_recursive(self, a, b) -> int:
+        if b == 0:
+            return a
+        else:
+            return self.mcd_recursive(b, a % b)
+
     def desconocido(self, n):
         i = 1
         s = 0

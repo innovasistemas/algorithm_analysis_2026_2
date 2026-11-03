@@ -15,6 +15,7 @@ while op != "0":
     print("5. Desconocido")
     print("6. Descifrar clave")
     print("7. Imprimir triángulo rectángulo")
+    print("8. MCD Euclides Recursivo")
     op = input("Ingrese opción: ")
     match op:
         case "0":
@@ -44,6 +45,10 @@ while op != "0":
         case "7":
             h = int(input("Ingrese altura: "))
             oper.triangle_rect(h)
+        case "8":
+            a = int(input("Número 1: "))
+            b = int(input("Número 2: "))
+            print(f"MCD({a}, {b}) = {oper.mcd_recursive(a, b)}")
         case _:
             print("Opción no válida")
 

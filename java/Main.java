@@ -3,6 +3,7 @@ import com.packages.graphs.Graph;
 import com.packages.linked_list.*;
 import com.packages.primes.*;
 import com.packages.utils.*;
+import com.packages.recursivity.*;
 import java.util.Scanner;
 
 public class Main
@@ -20,6 +21,7 @@ public class Main
             System.out.println("4. Listas Ligadas");
             System.out.println("5. Listas Doblemente Ligadas");
             System.out.println("6. Grafos");
+            System.out.println("7. Recursividad");
             System.out.print("Ingrese su opción: ");
             option = input.next();
             switch (option) {
@@ -43,6 +45,9 @@ public class Main
                     break;
                 case "6":
                     menuGraphs();
+                    break;
+                case "7":
+                    menuRecursivity();
                     break;
                 default:
                     System.out.println("Opción no válida");
@@ -330,12 +335,13 @@ public class Main
         LinkedSimpleList list = new LinkedSimpleList();
         NodeLSL q;
         do {
-            System.out.println("\n-----Menú Listas Doblemente Ligadas-----");    
+            System.out.println("\n-----Menú Listas Simplemente Ligadas-----");    
             System.out.println("0. Regresar");
             System.out.println("1. Agregar nodo");
             System.out.println("2. Mostrar lista");
             System.out.println("3. Buscar dato");
             System.out.println("4. Eliminar dato");
+            System.out.println("5. Mostrar lista recursiva");
             System.out.print("Ingrese su opción: ");
             option = input.next();
             switch (option) {
@@ -379,6 +385,13 @@ public class Main
                         } else {
                             System.out.println("El dato no existe en la lista");
                         }
+                    } else {
+                        System.out.println("Lista vacía");
+                    }
+                    break;
+                case "5":
+                    if (list.head != null) {
+                        list.showLSLRecursive(list.head);
                     } else {
                         System.out.println("Lista vacía");
                     }
@@ -638,6 +651,47 @@ public class Main
                 }
                 default -> System.out.println("Opción no válida");
             }            
+        } while (!option.equals("0"));
+    }
+
+    public static void menuRecursivity() {
+        String option;
+        int datum;
+        do {
+            System.out.println("\n-----Menú Recursividad-----");    
+            System.out.println("0. Regresar");
+            System.out.println("1. Factorial");
+            System.out.println("2. Suma n primeros naturales");
+            System.out.print("Ingrese su opción: ");
+            option = input.next();
+
+            switch (option) {
+                case "0" -> {
+                }
+                case "1" -> {
+                    System.out.print("Dato: ");
+                    datum = input.nextInt();
+                    input.nextLine();
+                    if (datum >= 0) {
+                        System.out.println(datum + "! = " + Recursion.factorialRecursive(datum));
+                    } else {
+                        System.out.println("Debe ingresar un número entero mayor o igual a cero");
+                    }
+                }
+                case "2" -> {
+                    System.out.print("Dato: ");
+                    datum = input.nextInt();
+                    input.nextLine();
+                    if (datum > 0) {
+                        System.out.println("Suma(" + datum + ") = " + Recursion.sumNaturalRecursive(datum));
+                    } else {
+                        System.out.println("Debe ingresar un número entero mayor a cero");
+                    }
+                }
+            
+                default -> System.out.println("Opción no válida");
+                    
+            }
         } while (!option.equals("0"));
     }
 
