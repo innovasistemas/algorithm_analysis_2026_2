@@ -4,6 +4,7 @@ import com.packages.linked_list.*;
 import com.packages.primes.*;
 import com.packages.utils.*;
 import com.packages.recursivity.*;
+import com.packages.trees.*;
 import java.util.Scanner;
 
 public class Main
@@ -22,6 +23,7 @@ public class Main
             System.out.println("5. Listas Doblemente Ligadas");
             System.out.println("6. Grafos");
             System.out.println("7. Recursividad");
+            System.out.println("8. Árboles Binarios");
             System.out.print("Ingrese su opción: ");
             option = input.next();
             switch (option) {
@@ -48,6 +50,9 @@ public class Main
                     break;
                 case "7":
                     menuRecursivity();
+                    break;
+                case "8":
+                    menuTrees();
                     break;
                 default:
                     System.out.println("Opción no válida");
@@ -688,9 +693,65 @@ public class Main
                         System.out.println("Debe ingresar un número entero mayor a cero");
                     }
                 }
-            
                 default -> System.out.println("Opción no válida");
-                    
+            }
+        } while (!option.equals("0"));
+    }
+
+    public static void menuTrees() {
+        String option;
+        Tree treeBin = new Tree();
+        do {
+            System.out.println("\n-----Menú Árboles Binarios-----");    
+            System.out.println("0. Regresar");
+            System.out.println("1. Crear árbol binario");
+            System.out.println("2. Recorrido preorden");
+            System.out.println("3. Recorrido inorden");
+            System.out.println("4. Recorrido postorden");
+            System.out.println("5. Contar hojas");
+            System.out.print("Ingrese su opción: ");
+            option = input.next();
+
+            switch (option) {
+                case "0" -> {
+                }
+                case "1" -> {
+                    treeBin.root = new NodeTree();
+                    treeBin.loadNode(treeBin.root);
+                    System.out.println("Árbol Binario creado correctamente");
+                }
+                case "2" -> {
+                    if (treeBin.root != null) {
+                        treeBin.preorder(treeBin.root);
+                    } else {
+                        System.out.println("Árbol binario vacío");
+                    }
+                }
+                case "3" -> {
+                    if (treeBin.root != null) {
+                        treeBin.inorder(treeBin.root);
+                    } else {
+                        System.out.println("Árbol binario vacío");
+                    }
+                }
+                case "4" -> {
+                    if (treeBin.root != null) {
+                        treeBin.postorder(treeBin.root);
+                    } else {
+                        System.out.println("Árbol binario vacío");
+                    }
+                }
+                case "5" -> {
+                    if (treeBin.root != null) {
+                        int countLeave[] = new int[1];
+                        countLeave[0] = 0;
+                        treeBin.countLeaves(treeBin.root, countLeave);
+                        System.out.println("Total hojas: " + countLeave[0]);
+                    } else {
+                        System.out.println("Árbol binario vacío");
+                    }
+                }
+                default -> System.out.println("Opción no válida");
             }
         } while (!option.equals("0"));
     }
